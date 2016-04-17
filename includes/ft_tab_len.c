@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_tab_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 15:37:13 by rabougue          #+#    #+#             */
-/*   Updated: 2015/12/15 23:23:38 by rabougue         ###   ########.fr       */
+/*   Created: 2016/04/11 19:29:47 by rabougue          #+#    #+#             */
+/*   Updated: 2016/04/11 19:32:44 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-void	ft_memdel(void **ap)
+int	tab_len(char **tab)
 {
-	if (ap != NULL)
-	{
-		free(*ap);
-		*ap = NULL;
-	}
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2015/12/17 22:35:08 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/04/05 23:02:11 by cattouma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+# include <fcntl.h>
+
+# define RC ft_putchar('\n');
+# define BUFF_SIZE 10
 
 typedef struct		s_list
 {
-	void			*content;
+	char			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
@@ -88,6 +92,8 @@ char				*ft_strrev(char *str);
 char				*ft_crypt(char *str);
 char				*ft_decrypt(char *str);
 void				ft_debug();
-int					ft_strnlen(char *str, char c);
+int					get_next_line(int const fd, char **line);
+void				tab_free(char **tab);
+int					tab_len(char **tab);
 
 #endif

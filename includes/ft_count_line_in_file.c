@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_count_line_in_file.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 15:37:13 by rabougue          #+#    #+#             */
-/*   Updated: 2015/12/15 23:23:38 by rabougue         ###   ########.fr       */
+/*   Created: 2016/04/11 19:28:17 by rabougue          #+#    #+#             */
+/*   Updated: 2016/04/11 19:28:22 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-void	ft_memdel(void **ap)
+int		count_line_in_file(char *file_name)
 {
-	if (ap != NULL)
+	char	*line;
+	int		i;
+	int		fd;
+
+	i = 0;
+	fd = open(file_name, O_RDONLY);
+	while (get_next_line(fd, &line) > 0)
 	{
-		free(*ap);
-		*ap = NULL;
+		i++;
+		free(line);
 	}
+	close(fd);
+	return (i);
 }
