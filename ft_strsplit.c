@@ -6,11 +6,11 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 13:39:24 by rabougue          #+#    #+#             */
-/*   Updated: 2016/03/15 19:21:11 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/05/04 09:19:29 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 static void	ft_split_count(char const *s, char c, int *j)
 {

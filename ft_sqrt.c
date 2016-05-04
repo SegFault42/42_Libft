@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/02 15:37:13 by rabougue          #+#    #+#             */
-/*   Updated: 2015/12/15 23:23:38 by rabougue         ###   ########.fr       */
+/*   Created: 2016/05/04 08:54:34 by rabougue          #+#    #+#             */
+/*   Updated: 2016/05/04 09:00:13 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-void	ft_memdel(void **ap)
+double	ft_sqrt(double a)
 {
-	if (ap != NULL)
-	{
-		free(*ap);
-		*ap = NULL;
-	}
+	return (a * a);
 }

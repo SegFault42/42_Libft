@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2016/04/05 23:02:11 by cattouma         ###   ########.fr       */
+/*   Updated: 2016/05/04 09:00:33 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ void				ft_debug();
 int					get_next_line(int const fd, char **line);
 void				tab_free(char **tab);
 int					tab_len(char **tab);
+double				ft_sqrt(double a);
 
 #endif
