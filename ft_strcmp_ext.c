@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
-#include <stdio.h>
 
 int	ft_strcmp_ext(char *str, char *ext)
 {
