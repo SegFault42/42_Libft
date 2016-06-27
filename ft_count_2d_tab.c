@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tab_free.c                                      :+:      :+:    :+:   */
+/*   ft_count_2d_tab                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/11 19:28:43 by rabougue          #+#    #+#             */
-/*   Updated: 2016/06/27 11:50:50 by rabougue         ###   ########.fr       */
+/*   Created: 2015/11/25 10:57:59 by rabougue          #+#    #+#             */
+/*   Updated: 2016/06/26 21:05:31 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-void	ft_tab_free(char **tab)
+void	ft_count_2d_tab(char **tab)
 {
-	int	i;
+	int		k;
+	int		j;
+	size_t	len;
 
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	len = 0;
+	k = 0;
+	j = 0;
+	while (tab[k])
+	{
+		j++;
+		if (tab[k][j])
+		{
+			len = ft_strlen(tab[k]);
+			k++;
+			j = 0;
+			ft_putnbr(len);
+			ft_putchar('\n');
+		}
+	}
 }

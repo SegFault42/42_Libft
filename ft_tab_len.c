@@ -6,13 +6,13 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/11 19:29:47 by rabougue          #+#    #+#             */
-/*   Updated: 2016/04/11 19:32:44 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/06/27 11:51:24 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-int	tab_len(char **tab)
+int	ft_tab_len(char **tab)
 {
 	int	i;
 
