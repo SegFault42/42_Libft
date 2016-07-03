@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2016/06/27 11:51:08 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/06/30 20:09:45 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 
 # define BUFF_SIZE 10
+# define RC ft_putchar('\n');
 
 typedef struct		s_list
 {
@@ -97,5 +98,7 @@ int					ft_tab_len(char **tab);
 double				ft_sqrt(double a);
 long				ft_atol(const char *str);
 void				ft_count_2d_tab(char **tab);
+char				*ft_itoa_base(unsigned long long n, char *base);
+size_t				ft_strclen(const char *s, char c);
 
 #endif

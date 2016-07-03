@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/30 19:55:50 by rabougue          #+#    #+#             */
-/*   Updated: 2016/06/30 20:02:48 by rabougue         ###   ########.fr       */
+/*   Created: 2015/11/25 21:47:55 by rabougue          #+#    #+#             */
+/*   Updated: 2016/05/04 09:17:48 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-char	*ft_itoa_base(unsigned long long n, char *base)
+size_t	ft_strclen(const char *s, char c)
 {
-	char				*str;
-	unsigned long long	i;
-	char				*j;
-	char				*k;
+	size_t i;
 
-	i = ft_strlen(base);
-	if (!(str = (char *)malloc(sizeof(char) * 2)))
-		return (NULL);
-	if (n >= i)
-	{
-		j = ft_itoa_base(n / i, base);
-		k = ft_itoa_base(n % i, base);
-		str = ft_strjoin(j, k);
-		free(j);
-		free(k);
-	}
-	else if (n < i)
-	{
-		str[0] = base[n];
-		str[1] = '\0';
-	}
-	return (str);
+	i = 0;
+	while (s[i] != c)
+		i++;
+	return (i);
 }
