@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_put_ulong.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:57:59 by rabougue          #+#    #+#             */
-/*   Updated: 2016/07/12 03:41:46 by rabougue         ###   ########.fr       */
+/*   Created: 2016/07/08 06:43:21 by rabougue          #+#    #+#             */
+/*   Updated: 2016/07/09 00:58:32 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_put_ulong(unsigned long n)
 {
-	int	i;
-	int	out;
-	int	j;
-
-	j = 0;
-	out = 0;
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+	if (n == 18446744073709551615UL)
 	{
-		i++;
-		j++;
+		ft_putstr("1");
+		n = 8446744073709551615;
 	}
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (n > 9)
 	{
-		out = out * 10 + str[i] - '0';
-		i++;
+		ft_put_ulong(n / 10);
+		ft_put_ulong(n % 10);
 	}
-	if (str[j] == '-')
-		out = out * -1;
-	return (out);
+	else
+		ft_putchar('0' + n);
 }

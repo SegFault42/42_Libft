@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_size_ttoa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:57:59 by rabougue          #+#    #+#             */
-/*   Updated: 2016/07/12 03:41:46 by rabougue         ###   ########.fr       */
+/*   Created: 2016/07/07 23:35:22 by rabougue          #+#    #+#             */
+/*   Updated: 2016/08/06 08:42:51 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-int	ft_atoi(const char *str)
+static void	incr(size_t *i, size_t *res)
 {
-	int	i;
-	int	out;
-	int	j;
+	while (*res != 0)
+	{
+		*res = *res / 10;
+		*i = *i + 1;
+	}
+}
 
-	j = 0;
-	out = 0;
+size_t		ft_size_ttoa(size_t n)
+{
+	size_t			i;
+	size_t			res;
+
 	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
-	{
-		i++;
-		j++;
-	}
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		out = out * 10 + str[i] - '0';
-		i++;
-	}
-	if (str[j] == '-')
-		out = out * -1;
-	return (out);
+	res = n;
+	if (res == 0)
+		i = 1;
+	incr(&i, &res);
+	return (i);
 }

@@ -14,15 +14,18 @@
 
 void	ft_putstr(char const *s)
 {
-	int i;
+	int		i;
+	char	buff[ft_strlen(s) + 1];
 
 	i = 0;
 	if (s != NULL)
 	{
 		while (s[i] != '\0')
 		{
-			ft_putchar(s[i]);
+			buff[i] = s[i];
 			i++;
 		}
+		buff[i] = '\0';
 	}
+	write(1, &buff, i);;
 }

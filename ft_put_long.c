@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_put_long.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:57:59 by rabougue          #+#    #+#             */
-/*   Updated: 2016/07/12 03:41:46 by rabougue         ###   ########.fr       */
+/*   Created: 2016/07/07 23:11:30 by rabougue          #+#    #+#             */
+/*   Updated: 2016/07/08 07:08:07 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_put_long(long n)
 {
-	int	i;
-	int	out;
-	int	j;
-
-	j = 0;
-	out = 0;
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f')
+	if (n == -9223372036854775807 - 1)
 	{
-		i++;
-		j++;
+		ft_putstr("-9");
+		n = 223372036854775808;
 	}
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	if (n < 0)
 	{
-		out = out * 10 + str[i] - '0';
-		i++;
+		ft_putchar('-');
+		n = -n;
 	}
-	if (str[j] == '-')
-		out = out * -1;
-	return (out);
+	if (n > 9)
+	{
+		ft_put_long(n / 10);
+		ft_put_long(n % 10);
+	}
+	else
+		ft_putchar('0' + n);
 }

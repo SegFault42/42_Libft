@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_2d_tab                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:57:59 by rabougue          #+#    #+#             */
-/*   Updated: 2016/08/06 22:08:32 by rabougue         ###   ########.fr       */
+/*   Created: 2016/08/06 09:05:53 by rabougue          #+#    #+#             */
+/*   Updated: 2016/08/10 18:49:18 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_count_2d_tab(char **tab)
+# include <stdarg.h>
+# include <wchar.h>
+# include "../../includes/libft.h"
+
+# define F format
+
+typedef struct	s_printf
 {
-	int		k;
-	int		j;
-	size_t	len;
+	int			ret;
+	int			buff_size;
+	char		*buff;
+	int			is_percent_d;
+	int			is_percent_s;
+	int			is_percent_c;
+}				t_printf;
 
-	k = 0;
-	j = 0;
-	while (tab[k])
-	{
-		j++;
-		if (tab[k][j])
-		{
-			len = ft_strlen(tab[k]);
-			k++;
-			j = 0;
-			ft_putnbr(len);
-			ft_putchar('\n');
-		}
-	}
-}
+int		ft_printf(const char *format, ...);
+
+#endif

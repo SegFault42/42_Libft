@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2016/06/30 20:09:45 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/08/10 18:31:02 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include "../ft_printf/includes/ft_printf.h"
 
+/*
+** Define for get_next_line function
+*/
 # define BUFF_SIZE 10
+
+# define TRUE 1
+# define FALSE 0
 # define RC ft_putchar('\n');
 
 typedef struct		s_list
@@ -98,7 +105,17 @@ int					ft_tab_len(char **tab);
 double				ft_sqrt(double a);
 long				ft_atol(const char *str);
 void				ft_count_2d_tab(char **tab);
-char				*ft_itoa_base(unsigned long long n, char *base);
+char				*ft_itoa_base(int value, int base);
 size_t				ft_strclen(const char *s, char c);
+char				*ft_hexa_itoa(unsigned int n, int up);
+char				*ft_hexa_ltoa(unsigned long long n, int up);
+void				print_memory(const void *addr, size_t size);
+void				ft_put_long(long n);
+char				*ft_ltoa(long n);
+char				*ft_ltoa_base(long value, int base);
+void				ft_put_ulong(unsigned long n);
+char				*ft_ultoa(unsigned long n);
+char				*ft_ultoa_base(unsigned long value, int base);
+size_t				ft_size_ttoa(size_t n);
 
 #endif
