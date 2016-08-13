@@ -1,11 +1,11 @@
-# FDF
+# Libft
 
 Résumé: Ce projet a pour but de vous faire coder en C une bibliothèque de fonctions usuelles que vous pourrez utiliser dans tous vos projets.
 
 Lien du sujet : [Libft.pdf][Libft]
 
 ### Langage autorisé:
-
+'''''
 - C
 
 ### Fonctions autorisées :
