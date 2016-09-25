@@ -11,10 +11,10 @@ void	init_struct(t_printf *print)
 	print->i = 0;
 }
 
-void	print_buff(t_printf *print)
+void	print_buff(t_printf *print, int *fd)
 {
 	print->buff[print->i] = '\0';
-	ft_putstr(print->buff);
+	ft_putstr_fd(print->buff, *fd);
 	free(print->buff);
 }
 

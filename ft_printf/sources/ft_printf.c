@@ -46,7 +46,7 @@ void	specifier(const char *format, va_list pa, t_printf *print)
 		percent_s(print, pa);
 }
 
-void	write_string(t_printf *print, const char *format, va_list pa)
+void	write_string(t_printf *print, const char *format, va_list pa, int *fd)
 {
 	print->buff = ft_memalloc(print->buff_size + 1);
 	while (*format)
@@ -71,10 +71,10 @@ void	write_string(t_printf *print, const char *format, va_list pa)
 		}
 		++format;
 	}
-	print_buff(print);
+	print_buff(print, fd);
 }
 
-int		ft_printf(const char *format, ...)
+int		ft_printf(int fd, const char *format, ...)
 {
 	t_printf	print;
 	va_list		pa;
@@ -89,7 +89,7 @@ int		ft_printf(const char *format, ...)
 	print.is_percent_d = 1;
 	print.is_percent_c = 1;
 	va_start(pa, format);
-	write_string(&print, format, pa);
+	write_string(&print, format, pa, &fd);
 	va_end(pa);
 	return (ft_strlen(print.buff));
 }
