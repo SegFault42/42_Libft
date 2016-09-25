@@ -10,7 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+PRE = ./ft_printf/sources/
+
+NAME = libftprintf.a
 
 SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
@@ -28,7 +30,9 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_count_2d_tab.c ft_itoa_base.c ft_strclen.c ft_hexa_itoa.c \
 	  ft_put_long.c ft_ltoa.c ft_put_ulong.c ft_ltoa_base.c ft_ultoa.c \
 	  ft_hexa_ltoa.c ft_ultoa_base.c ft_size_ttoa.c \
-	  ./ft_printf/sources/ft_printf.c \
+	  $(PRE)ft_printf.c $(PRE)percent_c.c \
+	  $(PRE)percent_d.c $(PRE)percent_s.c \
+	  $(PRE)tools.c \
 
 OBJS = $(SRC:.c=.o)
 
@@ -41,14 +45,9 @@ HEAD = ./includes/ ./ft_printf/includes/ft_printf.h
 all: $(NAME)
 
 $(NAME): $(OBJS) ./includes/libft.h
-#	@echo "\033[33mCompiling in .o ...\033[0m"
-	@$(CC) $(FLAG) -c $(SRC) -I $(HEAD)
-#	@echo "\033[33mCreating library ...\033[0m"
+	$(CC) $(FLAG) -c $(SRC) -I $(HEAD)
 	@ar rc $(NAME) $(OBJS)
-#	@echo "\033[33mIndexing library ...\033[0m"
 	@ranlib $(NAME)
-#	@echo "\033[32mLibrary Created !\033[0m"
-	@cp ./libft.a libftprintf.a
 
 %.o : %.c $(HEAD)
 	$(CC) -c $(FLAG) $< -o $@
@@ -56,13 +55,10 @@ $(NAME): $(OBJS) ./includes/libft.h
 mc: fclean all clean
 
 clean:
-#	@echo "\033[31mdeleting all .o ...\033[0m"
-	@rm -f $(OBJS)
-#	@echo "\033[32mThe folder is clean !\033[0m"
+	@rm -f $(OBJS) ./percent_c.o ./percent_d.o ./percent_s.o ./ft_printf.o \
+	./tools.o
 
-fclean:
-#	@echo "\033[31mDeleting libft.a and all .o ...\033[0m"
-	@rm -f $(NAME) $(OBJS)
-#	@echo "\033[32mThe folder is clean\033[0m"
+fclean: clean
+	@rm -f $(NAME)
 
 re: fclean all

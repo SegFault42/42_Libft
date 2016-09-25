@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   percent_s.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 13:56:26 by rabougue          #+#    #+#             */
-/*   Updated: 2016/05/04 09:16:24 by rabougue         ###   ########.fr       */
+/*   Created: 2016/08/14 15:06:29 by rabougue          #+#    #+#             */
+/*   Updated: 2016/08/14 15:06:45 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/libft.h"
+#include "../includes/ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+void	percent_s(t_printf *print, va_list pa)
 {
-	int		i;
-	char	*s1;
+	char	*s;
 
-	i = 0;
-	s1 = (char*)s;
-	while (s[i] != '\0')
+	s = va_arg(pa, char *);
+	if (print->is_percent_s == 1)
 	{
-		if (s[i] == c)
-			return (s1 + i);
-		i++;
+		if (s == 0)
+		{
+			ft_strcat(print->buff, "(null)");
+			print->i += 6;
+		}
+		else
+		{
+			ft_strcat(print->buff, s);
+			print->i += ft_strlen(s);
+		}
 	}
-	if (s[i] == c)
-		return (s1 + i);
-	return (NULL);
+	if (s == 0)
+	{
+		print->buff_size += 6;
+		return ;
+	}
+	else
+		print->buff_size += ft_strlen(s);
 }

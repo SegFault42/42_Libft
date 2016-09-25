@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   percent_c.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 10:57:38 by rabougue          #+#    #+#             */
-/*   Updated: 2015/12/16 11:41:53 by rabougue         ###   ########.fr       */
+/*   Created: 2016/08/14 15:06:00 by rabougue          #+#    #+#             */
+/*   Updated: 2016/08/14 15:50:16 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_printf.h"
 
-t_list *ft_lstmap(t_list *lst, t_list * (*f)(t_list *elem))
+void	percent_c(t_printf *print, va_list pa)
 {
-	t_list	*new;
+	char	c;
 
-	ft_lstiter(lst, (*f));
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	
+	c = va_arg(pa, int);
+	if (print->is_percent_c == 1)
+	{
+		print->buff[print->i] = c;
+		++print->i;
+	}
+	else
+		++print->buff_size;
 }
