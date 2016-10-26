@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/ft_fprintf.h"
 
 void	count_buff_size(t_printf *print, const char *format, va_list pa)
 {
@@ -74,7 +74,7 @@ void	write_string(t_printf *print, const char *format, va_list pa, int *fd)
 	print_buff(print, fd);
 }
 
-int		ft_printf(int fd, const char *format, ...)
+int		ft_fprintf(int fd, const char *format, ...)
 {
 	t_printf	print;
 	va_list		pa;

@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_FPRINTF_H
+# define FT_FPRINTF_H
 
 # include <stdarg.h>
-# include <wchar.h>
 # include "../../includes/libft.h"
 
 typedef struct	s_printf
@@ -28,7 +27,7 @@ typedef struct	s_printf
 	int			i;
 }				t_printf;
 
-int				ft_printf(int fd, const char *format, ...);
+int				ft_fprintf(int fd, const char *format, ...);
 void			percent_d(t_printf *print, va_list pa);
 void			percent_s(t_printf *print, va_list pa);
 void			percent_c(t_printf *print, va_list pa);

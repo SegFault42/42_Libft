@@ -10,9 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-PRE = ./ft_printf/sources/
+RED = \033[38;5;9m
+END = \033[0m
 
-NAME = libftprintf.a
+PRE = ./ft_fprintf/sources/
+
+NAME = libft.a
 
 SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_strncpy.c ft_strcat.c \
@@ -30,17 +33,18 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_count_2d_tab.c ft_itoa_base.c ft_strclen.c ft_hexa_itoa.c \
 	  ft_put_long.c ft_ltoa.c ft_put_ulong.c ft_ltoa_base.c ft_ultoa.c \
 	  ft_hexa_ltoa.c ft_ultoa_base.c ft_size_ttoa.c \
-	  $(PRE)ft_printf.c $(PRE)percent_c.c \
+	  $(PRE)ft_fprintf.c $(PRE)percent_c.c \
 	  $(PRE)percent_d.c $(PRE)percent_s.c \
 	  $(PRE)tools.c \
+	  ft_print_2d_tab.c
 
 OBJS = $(SRC:.c=.o)
 
 CC = clang
 
-FLAG = -Wall -Wextra -Werror
+FLAG = -Wall -Wextra -Werror -O3
 
-HEAD = ./includes/ ./ft_printf/includes/ft_printf.h
+HEAD = ./includes/ ./ft_fprintf/includes/ft_fprintf.h
 
 all: $(NAME)
 
@@ -50,12 +54,14 @@ $(NAME): $(OBJS) ./includes/libft.h
 	@ranlib $(NAME)
 
 %.o : %.c $(HEAD)
+	@printf "                                                               \r"
+	@printf "✅  $(notdir $<)\r"
 	$(CC) -c $(FLAG) $< -o $@
 
 mc: fclean all clean
 
 clean:
-	@rm -f $(OBJS) ./percent_c.o ./percent_d.o ./percent_s.o ./ft_printf.o \
+	@rm -f $(OBJS) ./percent_c.o ./percent_d.o ./percent_s.o ./ft_fprintf.o \
 	./tools.o
 
 fclean: clean

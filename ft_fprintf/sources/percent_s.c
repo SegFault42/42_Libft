@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/ft_fprintf.h"
 
 void	percent_s(t_printf *print, va_list pa)
 {

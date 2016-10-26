@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2016/08/10 18:31:02 by rabougue         ###   ########.fr       */
+/*   Updated: 2016/09/15 17:17:48 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@
 # include <string.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../ft_printf/includes/ft_printf.h"
+# include "../ft_fprintf/includes/ft_fprintf.h"
+# include "./colors.h"
 
-/*
-** Define for get_next_line function
-*/
 # define BUFF_SIZE 10
-
 # define TRUE 1
 # define FALSE 0
 # define RC ft_putchar('\n');
@@ -117,5 +114,8 @@ void				ft_put_ulong(unsigned long n);
 char				*ft_ultoa(unsigned long n);
 char				*ft_ultoa_base(unsigned long value, int base);
 size_t				ft_size_ttoa(size_t n);
+
+char				**ft_memalloc_2d(size_t size_1, size_t size_2);
+void				ft_print_2d_tab(char **tab, int size_y);
 
 #endif
