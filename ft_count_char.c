@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tab_free.c                                      :+:      :+:    :+:   */
+/*   ft_count_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/11 19:28:43 by rabougue          #+#    #+#             */
-/*   Updated: 2016/06/27 11:50:50 by rabougue         ###   ########.fr       */
+/*   Created: 2016/11/22 09:51:48 by rabougue          #+#    #+#             */
+/*   Updated: 2016/11/22 09:53:33 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-void	ft_tab_free(char **tab)
+int	ft_count_char(char *str, char c)
 {
 	int	i;
+	int	count;
 
 	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
+	count = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			++count;
+		++i;
+	}
+	return (count);
 }

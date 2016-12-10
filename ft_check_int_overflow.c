@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_2d_tab                                    :+:      :+:    :+:   */
+/*   check_int_overflow.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 10:57:59 by rabougue          #+#    #+#             */
-/*   Updated: 2016/11/20 12:53:40 by rabougue         ###   ########.fr       */
+/*   Created: 2016/11/19 21:40:26 by rabougue          #+#    #+#             */
+/*   Updated: 2016/11/19 21:45:29 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-int	ft_count_2d_tab(char **tab)
+bool	check_int_overflow(long nb)
 {
-	int	i;
+	char	*number;
 
-	i = 0;
-	while (tab[i])
-		++i;
-	return (i);
+	if (nb > INT_MAX || nb < INT_MIN)
+		return (EXIT_FAILURE);
+	number = ft_ltoa(nb);
+	if (ft_strlen(number) > 11)
+	{
+		free(number);
+		return (EXIT_FAILURE);
+	}
+	free(number);
+	return (EXIT_SUCCESS);
 }

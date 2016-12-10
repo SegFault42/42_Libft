@@ -6,12 +6,17 @@
 #    By: rabougue <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 19:16:51 by rabougue          #+#    #+#              #
-#    Updated: 2016/08/10 18:44:14 by rabougue         ###   ########.fr        #
+#    Updated: 2016/11/22 09:54:13 by rabougue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-RED = \033[38;5;9m
+RED = \033[48;5;9m
+GREEN = \033[48;5;10m
+LOL = \033[48;5;106m
+LIL = \033[48;5;129m
 END = \033[0m
+X = 0
+Y = 0
 
 PRE = ./ft_fprintf/sources/
 
@@ -29,14 +34,15 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_putnbr_fd.c ft_strsplit.c ft_strlcat.c ft_itoa.c ft_lstnew.c \
 	  ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 	  ft_swap.c ft_strrev.c ft_crypt.c ft_decrypt.c ft_debug.c get_next_line.c \
-	  ft_tab_free.c ft_tab_len.c ft_count_line_in_file.c ft_sqrt.c ft_atol.c \
+	  ft_2d_tab_free.c ft_tab_len.c ft_count_line_in_file.c ft_sqrt.c ft_atol.c \
 	  ft_count_2d_tab.c ft_itoa_base.c ft_strclen.c ft_hexa_itoa.c \
 	  ft_put_long.c ft_ltoa.c ft_put_ulong.c ft_ltoa_base.c ft_ultoa.c \
 	  ft_hexa_ltoa.c ft_ultoa_base.c ft_size_ttoa.c \
 	  $(PRE)ft_fprintf.c $(PRE)percent_c.c \
 	  $(PRE)percent_d.c $(PRE)percent_s.c \
 	  $(PRE)tools.c \
-	  ft_print_2d_tab.c
+	  ft_print_2d_tab.c ft_check_int_overflow.c ft_count_char.c ft_strccmp.c \
+	  ft_strcdup.c ft_strclen.c
 
 OBJS = $(SRC:.c=.o)
 
@@ -49,14 +55,21 @@ HEAD = ./includes/ ./ft_fprintf/includes/ft_fprintf.h
 all: $(NAME)
 
 $(NAME): $(OBJS) ./includes/libft.h
-	$(CC) $(FLAG) -c $(SRC) -I $(HEAD)
+	@$(CC) $(FLAG) -c $(SRC) -I $(HEAD)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
 %.o : %.c $(HEAD)
-	@printf "                                                               \r"
-	@printf "✅  $(notdir $<)\r"
-	$(CC) -c $(FLAG) $< -o $@
+	@$(eval X=$(shell echo $$(($(X)+1))))
+	@$(eval Y=$(shell echo $$(($(Y)+1))))
+	@echo "\x1b[$(X);0H                                                                                                        "
+	@echo "\x1b[48;5;$(X)m"
+	#@echo "$(GREEN)"
+	#@echo "$(LOL)"
+	#@echo "$(LIL)"
+	#@echo "\x1b[0;0H["
+	#@echo "\x1b[0;88H]"
+	@$(CC) -c $(FLAG) $< -o $@
 
 mc: fclean all clean
 
