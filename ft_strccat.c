@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strccat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 14:52:32 by rabougue          #+#    #+#             */
-/*   Updated: 2017/01/20 17:55:28 by rabougue         ###   ########.fr       */
+/*   Created: 2016/12/11 17:14:08 by rabougue          #+#    #+#             */
+/*   Updated: 2017/01/20 17:38:58 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
-{
-	char	*bb;
-	size_t	i;
+/*
+** Copie s2 (jusqu'au caractere c ou '\0' si c n'est pas present.) a la fin de
+** s1 en ecrasant le caractere null de s1. Un caractere null est ecrit a la fin
+** de s1.
+*/
 
-	c = (unsigned char)c;
-	bb = (char *)b;
+char	*ft_strccat(char *s1, const char *s2, char c)
+{
+	int i;
+	int j;
+
 	i = 0;
-	while (i < len)
+	j = 0;
+	while (s1[j] != '\0')
+		j++;
+	while (s2[i] != c)
 	{
-		bb[i] = c;
+		s1[j] = s2[i];
 		i++;
+		j++;
+		if (s2[i] == '\0')
+			break ;
 	}
-	return (bb);
+	s1[j] = '\0';
+	return (s1);
 }

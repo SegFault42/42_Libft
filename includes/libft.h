@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2016/11/22 17:09:35 by rabougue         ###   ########.fr       */
+/*   Updated: 2017/01/20 17:40:29 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../ft_fprintf/includes/ft_fprintf.h"
 # include "./colors.h"
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 1
 # define TRUE 1
 # define FALSE 0
 # define EXIT_ERROR -1
@@ -126,5 +126,8 @@ int					ft_count_char(char *str, char c);
 int					ft_strccmp(const char *s1, const char *s2, char c);
 size_t				ft_strclen(const char *s, char c);
 char				*ft_strcdup(const char *s1, char c);
+char				*ft_strccat(char *s1, const char *s2, char c);
+int					ft_isspace(char c);
+char				*ft_strndup(const char *s1, size_t nb);
 
 #endif
