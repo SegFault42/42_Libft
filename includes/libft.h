@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2017/01/20 17:40:29 by rabougue         ###   ########.fr       */
+/*   Updated: 2017/02/12 05:44:18 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ char				*ft_strrev(char *str);
 char				*ft_crypt(char *str);
 char				*ft_decrypt(char *str);
 void				ft_debug();
+int					get_next_line_lseek(int const fd, char **line, int *nb_char);
 int					get_next_line(int const fd, char **line);
 void				ft_2d_tab_free(char **tab, int size);
 int					ft_tab_len(char **tab);
@@ -129,5 +130,6 @@ char				*ft_strcdup(const char *s1, char c);
 char				*ft_strccat(char *s1, const char *s2, char c);
 int					ft_isspace(char c);
 char				*ft_strndup(const char *s1, size_t nb);
+void				*ft_trymalloc(size_t size);
 
 #endif
