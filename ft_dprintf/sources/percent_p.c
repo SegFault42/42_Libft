@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   percent_p.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/29 15:44:19 by rabougue          #+#    #+#             */
-/*   Updated: 2016/09/03 02:08:30 by rabougue         ###   ########.fr       */
+/*   Created: 2017/02/22 13:43:11 by rabougue          #+#    #+#             */
+/*   Updated: 2017/02/23 21:59:21 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_fprintf.h"
+#include "../includes/ft_dprintf.h"
 
-void	init_struct(t_printf *print)
+void	percent_p(t_printf *print, va_list pa)
 {
-	print->buff = NULL;
-	print->buff_size = 0;
-	print->ret = 0;
-	print->is_percent_c = 0;
-	print->is_percent_s = 0;
-	print->is_percent_d = 0;
-	print->i = 0;
-}
+	char	*p;
+	char	*hexa_ltoa;
 
-void	print_buff(t_printf *print, int *fd)
-{
-	print->buff[print->i] = '\0';
-	ft_putstr_fd(print->buff, *fd);
-	free(print->buff);
+	p = va_arg(pa, char*);
+	hexa_ltoa = ft_hexa_ltoa((unsigned long long)p, 0);
+	if (print->is_percent_p == 1)
+	{
+		ft_strcat(print->buff, "0x");
+		ft_strcat(print->buff, hexa_ltoa);
+		print->i += ft_strlen(hexa_ltoa + 2);
+	}
+	else
+		print->buff_size += ft_strlen(hexa_ltoa + 2);
+	free(hexa_ltoa);
 }

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent_d.c                                        :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/14 15:05:17 by rabougue          #+#    #+#             */
-/*   Updated: 2016/09/03 02:08:02 by rabougue         ###   ########.fr       */
+/*   Created: 2016/06/29 15:44:19 by rabougue          #+#    #+#             */
+/*   Updated: 2017/02/23 21:59:19 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_fprintf.h"
+#include "../includes/ft_dprintf.h"
 
-void	percent_d(t_printf *print, va_list pa)
+void	error(int error)
 {
-	char	*string;
+	if (error == MALLOC_ERROR)
+		ft_putendl_fd("Memory allocation failure", STDERR_FILENO);
+	exit(EXIT_FAILURE);
+}
 
-	string = ft_ltoa(va_arg(pa, long));
-	if (print->is_percent_d == 1)
-	{
-		ft_strcat(print->buff, string);
-		print->i += ft_strlen(string);
-	}
-	else
-		print->buff_size += ft_strlen(string);
-	free(string);
+void	print_buff(t_printf *print, int *fd)
+{
+	print->buff[print->i] = '\0';
+	ft_putstr_fd(print->buff, *fd);
+	free(print->buff);
 }

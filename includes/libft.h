@@ -6,7 +6,7 @@
 /*   By: rabougue <rabougue@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 18:34:24 by rabougue          #+#    #+#             */
-/*   Updated: 2017/02/12 05:44:18 by rabougue         ###   ########.fr       */
+/*   Updated: 2017/02/21 22:33:08 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <limits.h>
 # include <stdint.h>
 # include <stdbool.h>
-# include "../ft_fprintf/includes/ft_fprintf.h"
+# include "../ft_dprintf/includes/ft_dprintf.h"
 # include "./colors.h"
 
 # define BUFF_SIZE 1
