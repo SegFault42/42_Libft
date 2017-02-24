@@ -40,7 +40,7 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 	  ft_hexa_ltoa.c ft_ultoa_base.c ft_size_ttoa.c ft_strndup.c\
 	  $(PRE)ft_dprintf.c $(PRE)percent_c.c \
 	  $(PRE)percent_d.c $(PRE)percent_s.c $(PRE)percent_p.c\
-	  $(PRE)tools.c $(PRE)percent_x.c $(PRE)percent_o.c\
+	  $(PRE)tools.c $(PRE)percent_x.c $(PRE)percent_o.o\
 	  ft_print_2d_tab.c ft_check_int_overflow.c ft_count_char.c ft_strccmp.c \
 	  ft_strcdup.c ft_strclen.c ft_strccat.c get_next_line_lseek.c ft_isspace.c \
 	  ft_trymalloc.c
@@ -67,7 +67,7 @@ mc: fclean all clean
 
 clean:
 	@rm -f $(OBJS) ./percent_c.o ./percent_d.o ./percent_s.o ./ft_dprintf.o \
-	./percent_p.o ./percent_x.o ./tools.o
+	./percent_p.o ./percent_x.o ./tools.o ./percent_o.o
 
 fclean: clean
 	@rm -f $(NAME)
