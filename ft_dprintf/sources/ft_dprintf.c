@@ -23,12 +23,15 @@ void	count_buff_size(t_printf *print, const char *format, va_list pa)
 				++format;
 			if (*format == 'c')
 				percent_c(print, pa);
-			else if (*format == 'd' || *format == 'i')
-				percent_d(print, pa);
+			else if (*format == 'd' || *format == 'i' || *format == 'u' ||
+			*format == 'U' || *format == 'D')
+				percent_d(print, pa, *format);
 			else if (*format == 's')
 				percent_s(print, pa);
 			else if (*format == 'p')
 				percent_p(print, pa);
+			else if (*format == 'o' || *format == 'O')
+				percent_o(print, pa);
 			else if (*format == 'x')
 				percent_x(print, pa, 0);
 			else if (*format == 'X')
@@ -46,14 +49,17 @@ void	specifier(const char *format, va_list pa, t_printf *print)
 {
 	if (*format == 'c')
 		percent_c(print, pa);
-	else if (*format == 'd' || *format == 'i')
-		percent_d(print, pa);
+	else if (*format == 'd' || *format == 'i' || *format == 'u' ||
+	*format == 'U' || *format == 'D')
+		percent_d(print, pa, *format);
 	else if (*format == 's')
 		percent_s(print, pa);
 	else if (*format == 'p')
 		percent_p(print, pa);
 	else if (*format == 'x')
 		percent_x(print, pa, 0);
+	else if (*format == 'o' || *format == 'O')
+		percent_o(print, pa);
 	else if (*format == 'X')
 		percent_x(print, pa, 1);
 	else
@@ -98,6 +104,7 @@ void	set_specifier(t_printf *print)
 	print->is_percent_c = 1;
 	print->is_percent_p = 1;
 	print->is_percent_x = 1;
+	print->is_percent_o = 1;
 }
 
 int		ft_printf(/*int fd, */const char *format, ...)

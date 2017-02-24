@@ -14,8 +14,9 @@
 # define FT_DPRINTF_H
 
 # include <stdarg.h>
-# include "../../includes/libft.h"
 #include <stdio.h>
+#include <limits.h>
+# include "../../includes/libft.h"
 
 # define MALLOC_ERROR 1
 
@@ -29,15 +30,17 @@ typedef struct	s_printf
 	uint8_t		is_percent_c;
 	uint8_t		is_percent_p;
 	uint8_t		is_percent_x;
+	uint8_t		is_percent_o;
 	int			i;
 }				t_printf;
 
 int				ft_dprintf(/*int fd, */const char *format, ...);
-void			percent_d(t_printf *print, va_list pa);
+void			percent_d(t_printf *print, va_list pa, char format);
 void			percent_s(t_printf *print, va_list pa);
 void			percent_c(t_printf *print, va_list pa);
 void			percent_l(t_printf *print, va_list pa);
 void			percent_p(t_printf *print, va_list pa);
+void			percent_o(t_printf *print, va_list pa);
 void			percent_x(t_printf *print, va_list pa, int upper_lower);
 /*
 ** tools.c

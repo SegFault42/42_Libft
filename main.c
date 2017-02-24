@@ -1,10 +1,9 @@
 #include "libft.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	main()
 {
-	int i = 0;
-
-	printf("%x\n", 42);
-	ft_printf("%x\n", 42);
+	printf("%D\n", LONG_MIN);
+	ft_printf("%D\n", -9223372036854775808);
 }
