@@ -30,11 +30,8 @@ void	percent_s(t_printf *print, va_list pa)
 			print->i += ft_strlen(s);
 		}
 	}
-	if (s == 0)
-	{
+	else if (s == 0)
 		print->buff_size += 6;
-		return ;
-	}
 	else
 		print->buff_size += ft_strlen(s);
 }

@@ -19,9 +19,8 @@ void	error(int error)
 	exit(EXIT_FAILURE);
 }
 
-void	print_buff(t_printf *print, int *fd)
+void	print_buff(t_printf *print, int fd)
 {
-	print->buff[print->i] = '\0';
-	ft_putstr_fd(print->buff, *fd);
-	free(print->buff);
+	ft_putstr_fd(print->buff, fd);
+	ft_strdel(&print->buff);
 }

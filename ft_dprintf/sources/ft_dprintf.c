@@ -29,6 +29,10 @@ void	count_buff_size(t_printf *print, const char *format, va_list pa)
 				percent_s(print, pa);
 			else if (*format == 'p')
 				percent_p(print, pa);
+			else if (*format == 'x')
+				percent_x(print, pa, 0);
+			else if (*format == 'X')
+				percent_x(print, pa, 1);
 			else
 				++print->buff_size;
 		}
@@ -48,6 +52,10 @@ void	specifier(const char *format, va_list pa, t_printf *print)
 		percent_s(print, pa);
 	else if (*format == 'p')
 		percent_p(print, pa);
+	else if (*format == 'x')
+		percent_x(print, pa, 0);
+	else if (*format == 'X')
+		percent_x(print, pa, 1);
 	else
 	{
 		print->buff[print->i] = *format;
@@ -55,7 +63,7 @@ void	specifier(const char *format, va_list pa, t_printf *print)
 	}
 }
 
-void	write_string(t_printf *print, const char *format, va_list pa, int *fd)
+void	write_string(t_printf *print, const char *format, va_list pa)
 {
 	if ((print->buff = ft_memalloc(print->buff_size + 1)) == NULL)
 		error(MALLOC_ERROR);
@@ -81,9 +89,16 @@ void	write_string(t_printf *print, const char *format, va_list pa, int *fd)
 		}
 		++format;
 	}
-	print_buff(print, fd);
 }
 
+void	set_specifier(t_printf *print)
+{
+	print->is_percent_s = 1;
+	print->is_percent_d = 1;
+	print->is_percent_c = 1;
+	print->is_percent_p = 1;
+	print->is_percent_x = 1;
+}
 
 int		ft_printf(/*int fd, */const char *format, ...)
 {
@@ -97,12 +112,10 @@ int		ft_printf(/*int fd, */const char *format, ...)
 	va_start(pa, format);
 	count_buff_size(&print, format, pa);
 	va_end(pa);
-	print.is_percent_s = 1;
-	print.is_percent_d = 1;
-	print.is_percent_c = 1;
-	print.is_percent_p = 1;
+	set_specifier(&print);
 	va_start(pa, format);
-	write_string(&print, format, pa, &fd);
+	write_string(&print, format, pa);
+	print_buff(&print, fd);
 	va_end(pa);
-	return (ft_strlen(print.buff)); //variable used after free
+	return (print.buff_size);
 }

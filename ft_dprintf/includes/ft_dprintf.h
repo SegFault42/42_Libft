@@ -28,6 +28,7 @@ typedef struct	s_printf
 	uint8_t		is_percent_s;
 	uint8_t		is_percent_c;
 	uint8_t		is_percent_p;
+	uint8_t		is_percent_x;
 	int			i;
 }				t_printf;
 
@@ -37,10 +38,11 @@ void			percent_s(t_printf *print, va_list pa);
 void			percent_c(t_printf *print, va_list pa);
 void			percent_l(t_printf *print, va_list pa);
 void			percent_p(t_printf *print, va_list pa);
+void			percent_x(t_printf *print, va_list pa, int upper_lower);
 /*
 ** tools.c
 */
-void			print_buff(t_printf *print, int *fd);
+void			print_buff(t_printf *print, int fd);
 void			error(int error);
 
 #endif
