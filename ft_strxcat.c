@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_strxcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/16 10:57:38 by rabougue          #+#    #+#             */
-/*   Updated: 2015/12/16 11:41:53 by rabougue         ###   ########.fr       */
+/*   Created: 2017/04/06 19:13:28 by rabougue          #+#    #+#             */
+/*   Updated: 2017/04/06 19:13:30 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
-t_list *ft_lstmap(t_list *lst, t_list * (*f)(t_list *elem))
+void	ft_strxcat(char *dest, char *src, int x)
 {
-	t_list	*new;
-
-	ft_lstiter(lst, (*f));
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	
+	while (x > 0)
+	{
+		ft_strcat(dest, src);
+		--x;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/06 09:05:53 by rabougue          #+#    #+#             */
-/*   Updated: 2017/02/23 18:19:34 by rabougue         ###   ########.fr       */
+/*   Updated: 2017/04/06 19:29:20 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define FT_DPRINTF_H
 
 # include <stdarg.h>
-#include <stdio.h>
-#include <limits.h>
+# include <stdio.h>
+# include <limits.h>
 # include "../../includes/libft.h"
-
-# define MALLOC_ERROR 1
 
 typedef struct	s_printf
 {
@@ -34,7 +32,7 @@ typedef struct	s_printf
 	int			i;
 }				t_printf;
 
-int				ft_dprintf(/*int fd, */const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
 void			percent_d(t_printf *print, va_list pa, char format);
 void			percent_s(t_printf *print, va_list pa);
 void			percent_c(t_printf *print, va_list pa);

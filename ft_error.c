@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_2d_tab.c                                  :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rabougue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/21 19:21:22 by rabougue          #+#    #+#             */
-/*   Updated: 2016/09/23 22:19:24 by rabougue         ###   ########.fr       */
+/*   Created: 2017/03/02 15:14:04 by rabougue          #+#    #+#             */
+/*   Updated: 2017/04/06 19:17:51 by rabougue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/libft.h"
 
-void	ft_print_2d_tab(char **tab)
+void	ft_critical_error(uint8_t error)
 {
-	int	i;
-
-	i = 0;
-	if (tab == NULL)
-		ft_dprintf(1, "(NULL)\n");
+	if (error == MALLOC_ERROR)
+		ft_dprintf(STDERR_FILENO, RED"Memory allocation failure !\n"END);
 	else
-	{
-		while (tab[i])
-		{
-			ft_dprintf(1, "%s\n", tab[i]);
-			++i;
-		}
-	}
+		ft_dprintf(STDERR_FILENO, RED"Unknown error !\n"END);
+	exit(EXIT_FAILURE);
 }
