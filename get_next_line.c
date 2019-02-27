@@ -15,6 +15,7 @@
 static int	split_stat(char **line, char **stat)
 {
 	char	*content2;
+	char	*tmp = NULL;
 	int		len;
 
 	content2 = NULL;
@@ -24,11 +25,15 @@ static int	split_stat(char **line, char **stat)
 	{
 		len = content2 - *stat;
 		*line = ft_strsub(*stat, 0, len);
-		free(*stat);
-		if (ft_strlen(++content2))
+		if (ft_strlen(++content2)) {
+			tmp = *stat;
 			*stat = ft_strdup(content2);
-		else
+			free(tmp);
+		}
+		else {
+			free(*stat);
 			*stat = NULL;
+		}
 	}
 	else if (ft_strlen(*stat))
 	{

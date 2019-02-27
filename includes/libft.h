@@ -23,7 +23,7 @@
 # include "../ft_dprintf/includes/ft_dprintf.h"
 # include "./colors.h"
 
-# define BUFF_SIZE (1)
+# define BUFF_SIZE (1024)
 # define EXIT_ERROR (-1)
 # define RC ft_putchar('\n');
 
